@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Formulario de Pedido · IVENARK</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:      #1b3a6e;
+  --navy-mid:  #244a88;
+  --sky:       #6fa8c4;
+  --silver:    #a8b8cc;
+  --cream:     #f4f0eb;
+  --linen:     #ede8e0;
+  --linen-dark:#d8d0c4;
+  --ink:       #1a2a3a;
+  --ink-soft:  #3a4a5a;
+  --ink-pale:  #6a7a8a;
+  --gold:      #c4a456;
+  --green:     #2d7a4f;
+  --red:       #c0392b;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Cormorant Garamond', serif;
+  background: var(--cream);
+  color: var(--ink);
+  min-height: 100vh;
+}
+
+/* Header */
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 32px;
+  border-bottom: 2px solid var(--linen-dark);
+  background: var(--linen);
+}
+.header-logo-text {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(16px, 4vw, 22px);
+  font-weight: 600;
+  color: var(--navy);
+  letter-spacing: 4px;
+}
+.header-right {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: clamp(14px, 3vw, 17px);
+  color: var(--ink-soft);
+}
+
+/* Wrapper */
+.wrapper {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 48px 24px 80px;
+}
+
+/* Cabecera del formulario */
+.form-title {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(20px, 5vw, 30px);
+  font-weight: 600;
+  color: var(--navy);
+  letter-spacing: 3px;
+  text-align: center;
+  margin-bottom: 8px;
+}
+.form-subtitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 17px;
+  color: var(--ink-pale);
+  text-align: center;
+  margin-bottom: 36px;
+  line-height: 1.6;
+}
+.divider {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(to right, var(--navy), var(--sky));
+  margin: 0 auto 40px;
+  border-radius: 2px;
+}
+
+/* Secciones del formulario */
+.form-section {
+  margin-bottom: 36px;
+}
+.form-section-title {
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  letter-spacing: 4px;
+  color: var(--navy);
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 18px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--linen-dark);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.form-section-title span { font-size: 16px; }
+
+/* Grid de campos */
+.field-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.field-grid.single { grid-template-columns: 1fr; }
+@media (max-width: 560px) {
+  .field-grid { grid-template-columns: 1fr; }
+}
+
+/* Grupo de campo */
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.field-group.full { grid-column: 1 / -1; }
+
+label {
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--ink-soft);
+  text-transform: uppercase;
+}
+label .req {
+  color: var(--gold);
+  margin-left: 3px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+select,
+textarea {
+  width: 100%;
+  padding: 12px 16px;
+  background: #fff;
+  border: 1px solid var(--linen-dark);
+  border-radius: 4px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 17px;
+  color: var(--ink);
+  outline: none;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  -webkit-appearance: none;
+}
+input:focus, select:focus, textarea:focus {
+  border-color: var(--sky);
+  box-shadow: 0 0 0 3px rgba(111,168,196,0.15);
+}
+textarea {
+  resize: vertical;
+  min-height: 110px;
+  line-height: 1.7;
+}
+select { cursor: pointer; }
+
+/* Nota de ayuda bajo el campo */
+.field-note {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 13px;
+  color: var(--ink-pale);
+  margin-top: 2px;
+}
+
+/* Radio — viva / fallecida */
+.radio-group {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.radio-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  padding: 10px 18px;
+  border: 1px solid var(--linen-dark);
+  border-radius: 4px;
+  background: #fff;
+  transition: border-color 0.2s, background 0.2s;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 16px;
+  color: var(--ink-soft);
+  flex: 1;
+  min-width: 140px;
+}
+.radio-option input[type="radio"] { display: none; }
+.radio-option:has(input:checked) {
+  border-color: var(--navy);
+  background: rgba(27,58,110,0.05);
+  color: var(--navy);
+  font-weight: 600;
+}
+
+/* Aviso WhatsApp */
+.whatsapp-notice {
+  background: var(--linen);
+  border: 1px solid var(--linen-dark);
+  border-left: 4px solid #25d366;
+  border-radius: 4px;
+  padding: 14px 18px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 16px;
+  color: var(--ink-soft);
+  line-height: 1.7;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+.whatsapp-notice .wa-icon { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
+
+/* Consentimiento */
+.consent-block {
+  background: var(--linen);
+  border: 1px solid var(--linen-dark);
+  border-radius: 4px;
+  padding: 22px 24px;
+  margin-bottom: 28px;
+}
+.consent-check {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  cursor: pointer;
+}
+.consent-check input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  margin-top: 3px;
+  accent-color: var(--navy);
+  cursor: pointer;
+}
+.consent-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 16px;
+  color: var(--ink-soft);
+  line-height: 1.75;
+}
+.consent-text a {
+  color: var(--navy);
+  text-decoration: underline;
+}
+.consent-text a:hover { color: var(--sky); }
+
+/* Botón enviar */
+.submit-btn {
+  width: 100%;
+  padding: 16px 32px;
+  background: linear-gradient(135deg, var(--navy), var(--navy-mid));
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  font-family: 'Cinzel', serif;
+  font-size: 13px;
+  letter-spacing: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(27,58,110,0.25);
+}
+.submit-btn:hover {
+  background: linear-gradient(135deg, var(--navy-mid), var(--sky));
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(27,58,110,0.35);
+}
+.submit-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Mensajes de estado */
+.status-msg {
+  margin-top: 20px;
+  padding: 16px 20px;
+  border-radius: 4px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 17px;
+  line-height: 1.65;
+  display: none;
+}
+.status-msg.success {
+  background: rgba(45,122,79,0.08);
+  border: 1px solid rgba(45,122,79,0.3);
+  color: var(--green);
+  display: block;
+}
+.status-msg.error {
+  background: rgba(192,57,43,0.08);
+  border: 1px solid rgba(192,57,43,0.3);
+  color: var(--red);
+  display: block;
+}
+
+/* Campos obligatorios nota */
+.required-note {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 14px;
+  color: var(--ink-pale);
+  margin-bottom: 28px;
+  text-align: right;
+}
+.required-note span { color: var(--gold); }
+
+/* Footer */
+.page-footer {
+  text-align: center;
+  padding: 28px 24px 36px;
+  border-top: 1px solid var(--linen-dark);
+  background: var(--linen);
+}
+.footer-brand {
+  font-family: 'Cinzel', serif;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 5px;
+  color: var(--navy);
+  margin-bottom: 6px;
+}
+.footer-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-top: 10px;
+}
+.footer-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 15px;
+  color: var(--ink-soft);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-link:hover { color: var(--navy); }
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="site-header">
+  <span class="header-logo-text">IVENARK</span>
+  <span class="header-right">Formulario de pedido</span>
+</header>
+
+<div class="wrapper">
+
+  <h1 class="form-title">Solicitud de Pedido</h1>
+  <p class="form-subtitle">
+    Rellena el formulario con los datos de tu mascota.<br>
+    Te contactaremos por WhatsApp para coordinar el resto del proceso.
+  </p>
+  <div class="divider"></div>
+
+  <p class="required-note">Los campos marcados con <span>✦</span> son obligatorios.</p>
+
+  <form id="pedido-form" novalidate>
+
+    <!-- ── BLOQUE 1: Datos del cliente ── -->
+    <div class="form-section">
+      <h2 class="form-section-title"><span>👤</span> Tus datos de contacto</h2>
+
+      <div class="field-grid">
+        <div class="field-group">
+          <label for="nombre">Nombre <span class="req">✦</span></label>
+          <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+        </div>
+        <div class="field-group">
+          <label for="apellidos">Apellidos <span class="req">✦</span></label>
+          <input type="text" id="apellidos" name="apellidos" placeholder="Tus apellidos" required>
+        </div>
+        <div class="field-group">
+          <label for="email">Correo electrónico <span class="req">✦</span></label>
+          <input type="email" id="email" name="email" placeholder="correo@ejemplo.com" required>
+        </div>
+        <div class="field-group">
+          <label for="telefono">Teléfono / WhatsApp <span class="req">✦</span></label>
+          <input type="tel" id="telefono" name="telefono" placeholder="+34 600 000 000" required>
+          <span class="field-note">Por aquí te enviaremos el resultado y coordinaremos los detalles.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── BLOQUE 2: Datos de la mascota ── -->
+    <div class="form-section">
+      <h2 class="form-section-title"><span>🐾</span> Datos de tu mascota</h2>
+
+      <div class="field-grid">
+        <div class="field-group">
+          <label for="mascota-nombre">Nombre de la mascota <span class="req">✦</span></label>
+          <input type="text" id="mascota-nombre" name="mascota_nombre" placeholder="Ej: Luna" required>
+        </div>
+        <div class="field-group">
+          <label for="mascota-especie">Especie <span class="req">✦</span></label>
+          <select id="mascota-especie" name="mascota_especie" required>
+            <option value="" disabled selected>Selecciona...</option>
+            <option>Perro</option>
+            <option>Gato</option>
+            <option>Conejo</option>
+            <option>Ave</option>
+            <option>Reptil</option>
+            <option>Otro</option>
+          </select>
+        </div>
+        <div class="field-group">
+          <label for="mascota-raza">Raza</label>
+          <input type="text" id="mascota-raza" name="mascota_raza" placeholder="Ej: Golden Retriever">
+        </div>
+        <div class="field-group">
+          <label for="mascota-edad">Edad o año de nacimiento</label>
+          <input type="text" id="mascota-edad" name="mascota_edad" placeholder="Ej: 4 años o 2020">
+        </div>
+
+        <!-- Viva / Fallecida -->
+        <div class="field-group full">
+          <label>Estado actual de la mascota <span class="req">✦</span></label>
+          <div class="radio-group">
+            <label class="radio-option">
+              <input type="radio" name="mascota_estado" value="viva" required>
+              🌟 &nbsp; Está viva — quiero celebrarla
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="mascota_estado" value="fallecida">
+              🕊️ &nbsp; Ha fallecido — quiero homenajearla
+            </label>
+          </div>
+        </div>
+
+        <!-- Fechas si fallecida -->
+        <div class="field-group full" id="fechas-wrap" style="display:none;">
+          <label for="mascota-fechas">Fechas (nacimiento y fallecimiento)</label>
+          <input type="text" id="mascota-fechas" name="mascota_fechas" placeholder="Ej: 2015 – 2024">
+        </div>
+      </div>
+    </div>
+
+    <!-- ── BLOQUE 3: Historia para la canción ── -->
+    <div class="form-section">
+      <h2 class="form-section-title"><span>🎵</span> Historia para la canción</h2>
+
+      <div class="field-grid single">
+        <div class="field-group">
+          <label for="historia">Cuéntanos su historia <span class="req">✦</span></label>
+          <textarea
+            id="historia"
+            name="historia"
+            placeholder="Cuéntanos todo lo que quieras sobre tu mascota: cómo llegó a tu vida, su personalidad, sus manías, sus momentos más especiales, lo que más echas de menos o lo que más te hace sonreír de ella... Cuanta más información nos des, más especial será su canción."
+            required
+          ></textarea>
+          <span class="field-note">No hay límite de texto. Cuanto más detallada sea la historia, más personalizada será la canción.</span>
+        </div>
+        <div class="field-group">
+          <label for="dedicatoria">Dedicatoria o firma (opcional)</label>
+          <input type="text" id="dedicatoria" name="dedicatoria" placeholder="Ej: Con todo nuestro amor — La familia García">
+          <span class="field-note">Este texto aparecerá al final de la página digital como firma de la dedicatoria.</span>
+        </div>
+        <div class="field-group">
+          <label for="producto">Producto solicitado <span class="req">✦</span></label>
+          <select id="producto" name="producto" required>
+            <option value="" disabled selected>Selecciona el producto...</option>
+            <option value="llavero">Llavero básico</option>
+            <option value="colgante">Colgante personalizado</option>
+            <option value="kit">Kit completo (colgante + página digital + canción)</option>
+          </select>
+        </div>
+        <div class="field-group">
+          <label for="observaciones">Observaciones adicionales</label>
+          <textarea
+            id="observaciones"
+            name="observaciones"
+            style="min-height:80px;"
+            placeholder="Cualquier detalle especial que quieras indicarnos..."
+          ></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Aviso fotos/vídeos ── -->
+    <div class="whatsapp-notice" style="margin-bottom:28px;">
+      <span class="wa-icon">💬</span>
+      <span>Las <strong>fotografías y vídeos</strong> de tu mascota nos las podrás enviar cómodamente por <strong>WhatsApp</strong> una vez recibamos tu pedido. No es necesario adjuntarlas aquí.</span>
+    </div>
+
+    <!-- ── Consentimiento ── -->
+    <div class="consent-block">
+      <label class="consent-check">
+        <input type="checkbox" id="consentimiento" name="consentimiento" required>
+        <span class="consent-text">
+          He leído y acepto la
+          <a href="privacidad.html" target="_blank">Política de Privacidad</a>
+          de IVENARK. Autorizo el tratamiento de los datos personales facilitados en este formulario, así como el uso de las fotografías y vídeos que facilite posteriormente, con la finalidad exclusiva de crear el producto digital personalizado contratado.
+          Entiendo que puedo revocar este consentimiento en cualquier momento escribiendo a
+          <a href="mailto:ivenark.islas@gmail.com">ivenark.islas@gmail.com</a>.
+          <span class="req" style="color:var(--gold);"> ✦</span>
+        </span>
+      </label>
+    </div>
+
+    <!-- ── Botón enviar ── -->
+    <button type="submit" class="submit-btn" id="submit-btn">
+      ✦ &nbsp; ENVIAR SOLICITUD &nbsp; ✦
+    </button>
+
+    <div id="status-msg" class="status-msg"></div>
+
+  </form>
+
+</div><!-- /wrapper -->
+
+<!-- Footer -->
+<footer class="page-footer">
+  <p class="footer-brand">IVENARK</p>
+  <div class="footer-links">
+    <a class="footer-link" href="https://www.instagram.com/ivenark.oficial" target="_blank" rel="noopener">📸 @ivenark.oficial</a>
+    <a class="footer-link" href="https://www.tiktok.com/@ivenark" target="_blank" rel="noopener">🎵 @ivenark</a>
+    <a class="footer-link" href="mailto:ivenark.islas@gmail.com">✉️ ivenark.islas@gmail.com</a>
+  </div>
+</footer>
+
+<script>
+/* ══════════════════════════════════════════════
+   ▶ CONFIGURACIÓN — GOOGLE APPS SCRIPT
+   ══════════════════════════════════════════════
+   Pega aquí la URL de tu despliegue de GAS una
+   vez hayas creado el script de envío de email.
+   ══════════════════════════════════════════════ */
+const GAS_URL = "PEGA_AQUI_TU_URL_DE_GOOGLE_APPS_SCRIPT";
+
+/* ── Mostrar/ocultar campo fechas si fallecida ── */
+document.querySelectorAll('input[name="mascota_estado"]').forEach(radio => {
+  radio.addEventListener('change', () => {
+    const wrap = document.getElementById('fechas-wrap');
+    wrap.style.display = radio.value === 'fallecida' ? 'block' : 'none';
+  });
+});
+
+/* ── Envío del formulario ── */
+document.getElementById('pedido-form').addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  const form    = e.target;
+  const btn     = document.getElementById('submit-btn');
+  const msgEl   = document.getElementById('status-msg');
+
+  /* Validación básica */
+  if (!form.checkValidity()) {
+    form.reportValidity();
+    return;
+  }
+
+  const estadoRadio = form.querySelector('input[name="mascota_estado"]:checked');
+  if (!estadoRadio) {
+    alert('Por favor indica si la mascota está viva o ha fallecido.');
+    return;
+  }
+
+  /* Recoger datos */
+  const datos = {
+    nombre:         form.nombre.value.trim(),
+    apellidos:      form.apellidos.value.trim(),
+    email:          form.email.value.trim(),
+    telefono:       form.telefono.value.trim(),
+    mascota_nombre: form.mascota_nombre.value.trim(),
+    mascota_especie:form.mascota_especie.value,
+    mascota_raza:   form.mascota_raza.value.trim(),
+    mascota_edad:   form.mascota_edad.value.trim(),
+    mascota_estado: estadoRadio.value,
+    mascota_fechas: form.mascota_fechas ? form.mascota_fechas.value.trim() : '',
+    historia:       form.historia.value.trim(),
+    dedicatoria:    form.dedicatoria.value.trim(),
+    producto:       form.producto.value,
+    observaciones:  form.observaciones.value.trim(),
+    fecha_envio:    new Date().toLocaleString('es-ES'),
+  };
+
+  /* Deshabilitar botón mientras envía */
+  btn.disabled = true;
+  btn.textContent = 'Enviando...';
+  msgEl.className = 'status-msg';
+  msgEl.style.display = 'none';
+
+  try {
+    const resp = await fetch(GAS_URL, {
+      method:  'POST',
+      mode:    'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body:    JSON.stringify(datos),
+    });
+
+    /* no-cors siempre devuelve opaque — asumimos éxito si no hay excepción */
+    msgEl.className = 'status-msg success';
+    msgEl.innerHTML = `
+      ✦ &nbsp; <strong>¡Solicitud enviada correctamente!</strong><br>
+      Nos pondremos en contacto contigo por WhatsApp en las próximas horas
+      para coordinar los detalles y que nos envíes las fotos o vídeos de ${datos.mascota_nombre}.
+    `;
+    form.reset();
+    document.getElementById('fechas-wrap').style.display = 'none';
+
+  } catch (err) {
+    msgEl.className = 'status-msg error';
+    msgEl.innerHTML = `
+      Ha ocurrido un error al enviar el formulario. Por favor, escríbenos directamente a
+      <a href="mailto:ivenark.islas@gmail.com">ivenark.islas@gmail.com</a>
+      o por WhatsApp.
+    `;
+  } finally {
+    btn.disabled = false;
+    btn.textContent = '✦   ENVIAR SOLICITUD   ✦';
+    msgEl.style.display = 'block';
+    msgEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+});
+</script>
+</body>
+</html>

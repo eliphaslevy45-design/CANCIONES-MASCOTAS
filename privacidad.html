@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Política de Privacidad · IVENARK</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:      #1b3a6e;
+  --navy-mid:  #244a88;
+  --sky:       #6fa8c4;
+  --silver:    #a8b8cc;
+  --cream:     #f4f0eb;
+  --linen:     #ede8e0;
+  --linen-dark:#d8d0c4;
+  --ink:       #1a2a3a;
+  --ink-soft:  #3a4a5a;
+  --ink-pale:  #6a7a8a;
+  --gold:      #c4a456;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Cormorant Garamond', serif;
+  background: var(--cream);
+  color: var(--ink);
+  min-height: 100vh;
+}
+
+/* Header */
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 32px;
+  border-bottom: 2px solid var(--linen-dark);
+  background: var(--linen);
+}
+.header-logo-text {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(16px, 4vw, 22px);
+  font-weight: 600;
+  color: var(--navy);
+  letter-spacing: 4px;
+  text-decoration: none;
+}
+/* Sustituye el span por <img class="header-logo" src="logo-ivenark.png" alt="IVENARK"> */
+.header-logo { height: 64px; object-fit: contain; }
+
+.header-back {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 15px;
+  font-style: italic;
+  color: var(--ink-pale);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.header-back:hover { color: var(--navy); }
+
+/* Wrapper */
+.wrapper {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 52px 28px 80px;
+}
+
+/* Cabecera del documento */
+.doc-title {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(22px, 5vw, 34px);
+  font-weight: 600;
+  color: var(--navy);
+  letter-spacing: 3px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+.doc-subtitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 17px;
+  color: var(--ink-pale);
+  text-align: center;
+  margin-bottom: 8px;
+}
+.doc-date {
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: var(--silver);
+  text-align: center;
+  margin-bottom: 44px;
+  text-transform: uppercase;
+}
+
+.divider {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(to right, var(--navy), var(--sky));
+  margin: 0 auto 44px;
+  border-radius: 2px;
+}
+
+/* Secciones */
+.section {
+  margin-bottom: 40px;
+}
+.section-title {
+  font-family: 'Cinzel', serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  color: var(--navy);
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--linen-dark);
+}
+.section p {
+  font-size: 17px;
+  line-height: 1.85;
+  color: var(--ink-soft);
+  margin-bottom: 12px;
+}
+.section ul {
+  list-style: none;
+  margin: 10px 0 14px 0;
+  padding: 0;
+}
+.section ul li {
+  font-size: 17px;
+  line-height: 1.8;
+  color: var(--ink-soft);
+  padding: 4px 0 4px 20px;
+  position: relative;
+}
+.section ul li::before {
+  content: '✦';
+  position: absolute;
+  left: 0;
+  font-size: 9px;
+  color: var(--gold);
+  top: 9px;
+}
+
+/* Bloque responsable */
+.responsible-block {
+  background: var(--linen);
+  border: 1px solid var(--linen-dark);
+  border-left: 4px solid var(--navy);
+  border-radius: 4px;
+  padding: 20px 24px;
+  margin-bottom: 14px;
+}
+.responsible-block p {
+  margin: 0;
+  font-size: 16px;
+  color: var(--ink-soft);
+  line-height: 1.8;
+}
+.responsible-block strong {
+  color: var(--navy);
+  font-weight: 600;
+}
+
+/* Bloque de derechos */
+.rights-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+  margin-top: 14px;
+}
+.right-item {
+  background: var(--linen);
+  border: 1px solid var(--linen-dark);
+  border-radius: 4px;
+  padding: 16px 18px;
+}
+.right-item-title {
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: var(--navy);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+.right-item p {
+  font-size: 15px;
+  color: var(--ink-soft);
+  line-height: 1.6;
+  margin: 0 !important;
+}
+
+/* Aviso cookies */
+.notice-box {
+  background: #fff;
+  border: 1px solid var(--linen-dark);
+  border-left: 4px solid var(--sky);
+  border-radius: 4px;
+  padding: 18px 22px;
+  margin-top: 12px;
+}
+.notice-box p {
+  margin: 0 !important;
+  font-size: 16px;
+  color: var(--ink-soft);
+  line-height: 1.75;
+}
+
+/* Footer */
+.page-footer {
+  text-align: center;
+  padding: 28px 24px 36px;
+  border-top: 1px solid var(--linen-dark);
+  background: var(--linen);
+}
+.footer-brand {
+  font-family: 'Cinzel', serif;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 5px;
+  color: var(--navy);
+  margin-bottom: 6px;
+}
+.footer-copy {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 14px;
+  color: var(--ink-pale);
+}
+.footer-copy a {
+  color: var(--navy);
+  text-decoration: none;
+}
+.footer-copy a:hover { text-decoration: underline; }
+
+/* Responsive */
+@media (max-width: 600px) {
+  .site-header { padding: 14px 18px; }
+  .wrapper     { padding: 36px 16px 60px; }
+  .rights-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="site-header">
+  <span class="header-logo-text"><img class="header-logo" src="logo-ivenark.png" alt="IVENARK">IVENARK</span>
+  <a class="header-back" href="index.html">← Volver</a>
+</header>
+
+<div class="wrapper">
+
+  <h1 class="doc-title">Política de Privacidad</h1>
+  <p class="doc-subtitle">Información sobre el tratamiento de sus datos personales</p>
+  <p class="doc-date">Última actualización: junio de 2025</p>
+  <div class="divider"></div>
+
+  <!-- 1. Responsable -->
+  <div class="section">
+    <h2 class="section-title">1. Responsable del tratamiento</h2>
+    <div class="responsible-block">
+      <p><strong>Nombre:</strong> Enrique Romero Morales</p>
+      <p><strong>NIF:</strong> [43667367G]</p>
+      <p><strong>Actividad:</strong> IVENARK — Creaciones personalizadas digitales</p>
+      <p><strong>Domicilio:</strong> Las Palmas de Gran Canaria, Islas Canarias, España</p>
+      <p><strong>Correo electrónico de contacto:</strong> ivenark.islas@gmail.com</p>
+    </div>
+    <p>En cumplimiento del Reglamento (UE) 2016/679 (RGPD) y la Ley Orgánica 3/2018 de Protección de Datos Personales y Garantía de los Derechos Digitales (LOPDGDD), le informamos sobre el tratamiento de sus datos personales.</p>
+  </div>
+
+  <!-- 2. Datos que recogemos -->
+  <div class="section">
+    <h2 class="section-title">2. Datos personales que recogemos</h2>
+    <p>Con el fin de prestar el servicio solicitado, recogemos los siguientes datos personales a través de nuestro formulario de pedido:</p>
+    <ul>
+      <li>Nombre y apellidos del cliente</li>
+      <li>Dirección de correo electrónico</li>
+      <li>Número de teléfono (para comunicación por WhatsApp u otros medios)</li>
+      <li>Firma o dedicatoria personal que el cliente desea incluir en el producto</li>
+      <li>Datos de la mascota: nombre, especie, raza, edad o fechas relevantes</li>
+      <li>Historia, anécdotas y descripción de la personalidad de la mascota, facilitadas voluntariamente por el cliente para la creación de la canción personalizada</li>
+    </ul>
+    <p>Las fotografías y vídeos de la mascota <strong>no se recogen a través del formulario</strong>. Son facilitados directamente por el cliente a través de WhatsApp u otro canal acordado, y son utilizados exclusivamente para el montaje del producto digital contratado.</p>
+  </div>
+
+  <!-- 3. Finalidad -->
+  <div class="section">
+    <h2 class="section-title">3. Finalidad del tratamiento</h2>
+    <p>Los datos recogidos se utilizan exclusivamente para los siguientes fines:</p>
+    <ul>
+      <li>Gestionar y ejecutar el pedido contratado por el cliente</li>
+      <li>Crear la página digital personalizada vinculada al producto IVENARK</li>
+      <li>Componer una canción personalizada basada en la historia de la mascota</li>
+      <li>Comunicarnos con el cliente durante el proceso de creación y entrega</li>
+      <li>Enviar el producto finalizado y la información de acceso al cliente</li>
+    </ul>
+    <p>Sus datos no serán utilizados para ninguna finalidad distinta a las descritas, ni para envío de comunicaciones comerciales sin su consentimiento expreso.</p>
+  </div>
+
+  <!-- 4. Legitimación -->
+  <div class="section">
+    <h2 class="section-title">4. Base legal del tratamiento</h2>
+    <p>El tratamiento de sus datos se basa en:</p>
+    <ul>
+      <li><strong>Consentimiento explícito</strong> del cliente, otorgado mediante la aceptación de la presente política en el formulario de pedido (art. 6.1.a RGPD)</li>
+      <li><strong>Ejecución de un contrato</strong> o acuerdo de servicio entre el cliente e IVENARK (art. 6.1.b RGPD)</li>
+    </ul>
+    <p>El cliente puede retirar su consentimiento en cualquier momento, sin que ello afecte a la licitud del tratamiento realizado con anterioridad.</p>
+  </div>
+
+  <!-- 5. Conservación -->
+  <div class="section">
+    <h2 class="section-title">5. Plazo de conservación</h2>
+    <p>Los datos personales se conservarán durante el tiempo necesario para la prestación del servicio contratado y, una vez finalizado este, durante un plazo máximo de <strong>2 años</strong>, salvo que el cliente solicite su eliminación antes o que una obligación legal exija conservarlos por más tiempo.</p>
+    <p>La página digital personalizada alojada en GitHub Pages permanecerá activa mientras el cliente mantenga el acceso contratado. El cliente puede solicitar su eliminación en cualquier momento dirigiéndose a ivenark.islas@gmail.com.</p>
+  </div>
+
+  <!-- 6. Destinatarios -->
+  <div class="section">
+    <h2 class="section-title">6. Destinatarios y transferencias de datos</h2>
+    <p>IVENARK no vende, alquila ni cede sus datos personales a terceros. No obstante, para la prestación del servicio se utilizan los siguientes servicios externos, que actúan como encargados del tratamiento:</p>
+    <ul>
+      <li><strong>GitHub, Inc.</strong> — Plataforma de alojamiento de la página digital personalizada del cliente (GitHub Pages). Política de privacidad disponible en github.com/site/privacy.</li>
+      <li><strong>Google LLC</strong> — Servicio de correo electrónico utilizado para la comunicación con el cliente y recepción del formulario de pedido. Política de privacidad disponible en policies.google.com/privacy.</li>
+    </ul>
+    <p>Estos servicios pueden implicar transferencias internacionales de datos. Tanto GitHub como Google están adheridos a mecanismos reconocidos de adecuación y ofrecen garantías apropiadas conforme al RGPD.</p>
+    <p>No se realizan otras transferencias de datos a terceros.</p>
+  </div>
+
+  <!-- 7. Derechos -->
+  <div class="section">
+    <h2 class="section-title">7. Sus derechos</h2>
+    <p>Como titular de los datos, usted tiene derecho a:</p>
+    <div class="rights-grid">
+      <div class="right-item">
+        <p class="right-item-title">Acceso</p>
+        <p>Saber qué datos suyos tratamos y obtener una copia.</p>
+      </div>
+      <div class="right-item">
+        <p class="right-item-title">Rectificación</p>
+        <p>Corregir datos inexactos o incompletos.</p>
+      </div>
+      <div class="right-item">
+        <p class="right-item-title">Supresión</p>
+        <p>Solicitar la eliminación de sus datos cuando ya no sean necesarios.</p>
+      </div>
+      <div class="right-item">
+        <p class="right-item-title">Oposición</p>
+        <p>Oponerse al tratamiento de sus datos en determinadas circunstancias.</p>
+      </div>
+      <div class="right-item">
+        <p class="right-item-title">Limitación</p>
+        <p>Solicitar que se limite el uso de sus datos mientras se resuelve una reclamación.</p>
+      </div>
+      <div class="right-item">
+        <p class="right-item-title">Portabilidad</p>
+        <p>Recibir sus datos en formato estructurado y de uso común.</p>
+      </div>
+    </div>
+    <p style="margin-top:18px;">Para ejercer cualquiera de estos derechos, puede ponerse en contacto con nosotros en: <strong>ivenark.islas@gmail.com</strong> indicando en el asunto "Derechos RGPD" y adjuntando una copia de su documento de identidad.</p>
+    <p>Si considera que el tratamiento de sus datos no es conforme a la normativa, tiene derecho a presentar una reclamación ante la <strong>Agencia Española de Protección de Datos (AEPD)</strong> en <a href="https://www.aepd.es" target="_blank" rel="noopener" style="color:var(--navy);">www.aepd.es</a>.</p>
+  </div>
+
+  <!-- 8. Seguridad -->
+  <div class="section">
+    <h2 class="section-title">8. Seguridad de los datos</h2>
+    <p>IVENARK aplica medidas técnicas y organizativas adecuadas para proteger sus datos personales frente a accesos no autorizados, pérdida o destrucción accidental. Las páginas digitales están protegidas mediante contraseña de acceso individual, única para cada cliente.</p>
+  </div>
+
+  <!-- 9. Cookies -->
+  <div class="section">
+    <h2 class="section-title">9. Cookies</h2>
+    <div class="notice-box">
+      <p>Las páginas digitales personalizadas de IVENARK <strong>no utilizan cookies propias</strong> de seguimiento o publicidad. GitHub Pages, la plataforma de alojamiento, puede establecer cookies técnicas propias de su infraestructura. Puede consultar la política de cookies de GitHub en github.com/site/privacy.</p>
+    </div>
+  </div>
+
+  <!-- 10. Modificaciones -->
+  <div class="section">
+    <h2 class="section-title">10. Modificaciones de esta política</h2>
+    <p>IVENARK se reserva el derecho de actualizar la presente Política de Privacidad para adaptarla a cambios legislativos o del servicio. Cualquier modificación significativa será comunicada al cliente a través de los datos de contacto facilitados.</p>
+    <p>La versión vigente siempre estará disponible en esta página.</p>
+  </div>
+
+</div><!-- /wrapper -->
+
+<footer class="page-footer">
+  <p class="footer-brand">IVENARK</p>
+  <p class="footer-copy">
+    Una canción para quien más quieres · Gran Canaria ·
+    <a href="mailto:ivenark.islas@gmail.com">ivenark.islas@gmail.com</a>
+  </p>
+</footer>
+
+</body>
+</html>
